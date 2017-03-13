@@ -1,0 +1,10 @@
+<% if @verified_payment %>
+<h1>Response is:</h1>
+
+<% @response.each do |key,val| %>
+	<p><%= key %> = <%= val %>
+<% end %>
+<% else %>
+  Couldn't verify Payment
+<% end %>  
+<p><a href='/payment' class='btn btn-primary'>Make another payment</a></p>

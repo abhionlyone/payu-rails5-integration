@@ -1,0 +1,58 @@
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>POS</td>
+    <td>2</td>
+    <td>15000₹</td>
+  </tr>
+  <tr>
+    <td>MPOS</td>
+    <td>3</td>
+    <td>7000₹</td>
+  </tr>
+</table>
+<br>
+<form action="https://test.payu.in/_payment" method='post' id='sub'  >
+    <input type="hidden" name="key" value="<%= @key %>">
+    <input type="hidden" name="hash" value="<%= @checksum %>">
+    <input type="hidden" name="txnid" value=<%= @options[:txnid] %>>
+    <input type="hidden" name="amount" value=<%= @options[:amount] %>>
+    <input type="hidden" name="firstname" value=<%= @options[:firstname] %>>
+    <input type="hidden" name="email" value=<%= @options[:email] %>>
+    <input type="hidden" name="phone" value=<%= @options[:phone] %>>
+    <input type="hidden" name="productinfo" value="<%= @options[:productinfo] %>">
+    <input type="hidden" name="surl" value="<%= request.base_url %>/success">
+    <input type="hidden" name="furl" value="<%= request.base_url %>/failure">
+    <input type="hidden" name="udf1" value="<%= @options[:udf1] %>">
+    <input type="hidden" name="udf2" value="<%= @options[:udf2] %>">
+    <input type="hidden" name="udf3" value="<%= @options[:udf3] %>">
+    <input type="hidden" name="udf4" value="<%= @options[:udf4] %>">
+    <input type="hidden" name="udf5" value="<%= @options[:udf5] %>">
+    <input type="submit" value="Pay Now" class="btn btn-primary" >
+</form>
+
+
